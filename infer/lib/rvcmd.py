@@ -19,6 +19,7 @@ def sha256(f) -> str:
 def check_model(dir_name: Path, model_name: str, hash: str) -> bool:
     target = dir_name / model_name
     relname = str(target)
+    relname = relname.replace("\\", "/")
     relname = relname[relname.rindex("assets/") :]
     logger.debug(f"checking {relname}...")
     if not os.path.exists(target):
